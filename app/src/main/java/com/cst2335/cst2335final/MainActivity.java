@@ -14,11 +14,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // ******Creating OnclickListener that leads to soccer activity***************
-        ImageView soccer=  findViewById(R.id.soccer);
+        ImageView soccer =  findViewById(R.id.soccer);
         Intent goSoccer = new Intent(this, soccerActivity.class);
         soccer.setOnClickListener( click -> startActivity(goSoccer));
         // ******End of OnclickListener that leads to soccer activity***************
 
-
+        // ******Creating OnclickListener that leads to TriviaActivity***************
+        ImageView trivia =  findViewById(R.id.trivia);
+        Intent goTrivia = new Intent(this, TriviaActivity.class);
+        trivia.setOnClickListener( click -> startActivity(goTrivia));
+        // ******End of OnclickListener that leads to TriviaActivity***************
     }
 }
