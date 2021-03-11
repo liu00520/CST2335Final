@@ -1,16 +1,150 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".TriviaActivity">
 
+    <TextView
+        android:id="@+id/welcomeToTrivia"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/welcomeToTrivia"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        android:textColor="@color/black"/>
 
-    <Button
-        android:id="@+id/button"
+    <TextView
+        android:id="@+id/instructions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:textSize="20dp"
+        android:layout_below="@+id/welcomeToTrivia"
+        android:text="@string/instructions" />
+    <TextView
+        android:id="@+id/quantityOfQuestions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/instructions"
+        android:textSize="20dp"
+        android:text="@string/quantityOfQuestions"
+        android:textStyle="bold"/>
+    <EditText
+        android:id="@+id/enterQuantity"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/quantityOfQuestions"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:hint="Default: 10"/>
+
+    <TextView
+        android:id="@+id/chooseDifficulty"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        android:layout_below="@+id/enterQuantity"
+        android:textSize="20dp"
+        android:text="@string/chooseDifficulty"
+        android:textStyle="bold"/>
+
+    <LinearLayout
+        android:id="@+id/difficultyLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/chooseDifficulty"
+        android:gravity="center">
+
+        <ImageButton
+            android:id="@+id/any"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/instructions"
+            android:src="@drawable/any"
+            android:background="?android:selectableItemBackground"/>
+
+        <ImageButton
+            android:id="@+id/easy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/instructions"
+            android:src="@drawable/easy"
+            android:background="?android:selectableItemBackground"/>
+        <ImageButton
+            android:id="@+id/medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/instructions"
+            android:layout_toRightOf="@+id/easy"
+            android:src="@drawable/medium"
+            android:background="?android:selectableItemBackground"/>
+        <ImageButton
+            android:id="@+id/hard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/instructions"
+            android:layout_toRightOf="@+id/medium"
+            android:src="@drawable/hard"
+            android:background="?android:selectableItemBackground" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/chooseCategory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/difficultyLayout"
+        android:textSize="20dp"
+        android:text="@string/chooseCategory"
+        android:textStyle="bold"/>
+    <Spinner
+        android:id="@+id/categorySpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/chooseCategory" />
+    <TextView
+        android:id="@+id/chooseType"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/categorySpinner"
+        android:textSize="20dp"
+        android:text="@string/chooseType"
+        android:textStyle="bold"/>
+
+
+    <RadioGroup
+        android:id="@+id/radioChoiceGroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="Trivia Test" />
-</LinearLayout>
+        android:orientation="horizontal"
+        android:layout_below="@+id/chooseType">
+
+        <RadioButton
+            android:id="@+id/anyChoice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/anyChoice"/>
+        <RadioButton
+            android:id="@+id/multipleChoice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/multipleChoice"/>
+        <RadioButton
+            android:id="@+id/booleanChoice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/booleanChoice"/>
+
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/start"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/radioChoiceGroup"
+        android:text="@string/start"/>
+
+
+</RelativeLayout>

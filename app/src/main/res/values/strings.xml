@@ -11,4 +11,15 @@
     <string name="author4">Jia Liu 040992662 </string>
     <string name="since">Since 2021W</string>
 
+    //Trivia Strings
+    <string name="welcomeToTrivia">Welcome to Trivia</string>
+    <string name="instructions">Before we start the game, let\'s quickly choose how you would like to play!</string>
+    <string name="chooseDifficulty">Choose difficulty level:</string>
+    <string name="chooseCategory">Select category:</string>
+    <string name="chooseType">Choose type of questions:</string>
+    <string name="booleanChoice">True or False</string>
+    <string name="multipleChoice">Multiple Choice</string>
+    <string name="anyChoice">Any type</string>
+    <string name="quantityOfQuestions">Quantity of questions:</string>
+    <string name="start">Start Game</string>
 </resources>
