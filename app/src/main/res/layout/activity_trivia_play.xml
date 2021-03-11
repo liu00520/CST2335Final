@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TriviaPlayActivity"
+    android:background="@color/cardview_light_background">
+
+    <TextView
+        android:id="@+id/triviaQuiz"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:layout_marginBottom="10dp"
+        android:gravity="center"
+        android:textSize="30dp"
+        android:text="Trivia Quiz"/>
+
+
+        <ImageView
+            android:id="@+id/correct"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/triviaQuiz"
+            android:src="@drawable/correct"/>
+
+        <TextView
+            android:id="@+id/correctQuantity"
+            android:layout_width="48dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/triviaQuiz"
+            android:layout_toRightOf="@+id/correct"
+            android:text="10"
+            android:textSize="36dp"
+            android:textStyle="bold"
+            android:gravity="center"/>
+
+
+
+        <ImageView
+            android:id="@+id/wrong"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/triviaQuiz"
+            android:layout_toLeftOf="@+id/wrongQuantity"
+            android:src="@drawable/wrong" />
+
+        <TextView
+            android:id="@+id/wrongQuantity"
+            android:layout_width="48dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/triviaQuiz"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="0dp"
+            android:text="01"
+            android:textSize="36dp"
+            android:textStyle="bold"
+            android:gravity="center" />
+
+        <TextView
+            android:id="@+id/questionContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="0dp"
+            android:layout_below="@id/correct"
+            android:layout_centerInParent="true"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:textColor="@color/cardview_dark_background"
+            android:text="Norwegian producer Kygo released a remix of the song &quot;Sexual Healing&quot; by Marvin Gaye."
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <RadioGroup
+            android:id="@+id/radioTrueFalse"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/questionContent"
+            android:layout_marginTop="50dp"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/choiceTrue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="20dp"
+                android:text="@string/choiceTrue"/>
+            <RadioButton
+                android:id="@+id/choiceFalse"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="20dp"
+                android:text="@string/choiceFalse"/>
+        </RadioGroup>
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:src="@drawable/previous"
+            android:background="?android:selectableItemBackground"/>
+
+        <TextView
+            android:id="@+id/currentQuestion"
+            android:layout_width="wrap_content"
+            android:layout_height="63dp"
+            android:layout_alignParentBottom="true"
+            android:layout_toLeftOf="@+id/questions"
+            android:layout_marginTop="0dp"
+            android:gravity="center"
+            android:text="01"
+            android:textSize="30dp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/questions"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginBottom="10dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerInParent="true"
+            android:src="@drawable/questions" />
+
+        <TextView
+            android:id="@+id/questionsQuantity"
+            android:layout_width="wrap_content"
+            android:layout_height="63dp"
+            android:layout_alignParentBottom="true"
+            android:layout_toRightOf="@+id/questions"
+            android:layout_marginTop="0dp"
+            android:gravity="center"
+            android:text="10"
+            android:textSize="30dp"
+            android:textStyle="bold" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/next"
+            android:background="?android:selectableItemBackground"/>
+
+</RelativeLayout>

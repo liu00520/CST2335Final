@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CST2335Final">
-        <activity android:name=".TriviaActivity"></activity>
+        <activity android:name=".TriviaPlayActivity"></activity>
+        <activity android:name=".TriviaActivity" />
         <activity android:name=".soccerActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>

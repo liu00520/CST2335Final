@@ -22,4 +22,6 @@
     <string name="anyChoice">Any type</string>
     <string name="quantityOfQuestions">Quantity of questions:</string>
     <string name="start">Start Game</string>
+    <string name="choiceFalse">False</string>
+    <string name="choiceTrue">True</string>
 </resources>

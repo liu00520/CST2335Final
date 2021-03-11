@@ -2,13 +2,16 @@ package com.cst2335.cst2335final;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -48,8 +51,7 @@ public class TriviaActivity extends AppCompatActivity implements AdapterView.OnI
         ImageButton medium = findViewById(R.id.medium);
         ImageButton hard = findViewById(R.id.hard);
 
-        //On click listener for easy button
-
+        //On click listener for any button
         any.setOnClickListener(click -> {
             urlBuilder.setDifficulty(0);
             Toast.makeText(this, "Any", Toast.LENGTH_SHORT).show();
@@ -60,7 +62,6 @@ public class TriviaActivity extends AppCompatActivity implements AdapterView.OnI
         });
 
         //On click listener for easy button
-
         easy.setOnClickListener(click -> {
             urlBuilder.setDifficulty(1);
             Toast.makeText(this, "Easy", Toast.LENGTH_SHORT).show();
@@ -70,8 +71,7 @@ public class TriviaActivity extends AppCompatActivity implements AdapterView.OnI
             hard.setBackgroundColor(0);
         });
 
-        //On click listener for easy button
-
+        //On click listener for medium button
         medium.setOnClickListener(click -> {
             urlBuilder.setDifficulty(2);
             Toast.makeText(this, "Medium", Toast.LENGTH_SHORT).show();
@@ -81,8 +81,7 @@ public class TriviaActivity extends AppCompatActivity implements AdapterView.OnI
             hard.setBackgroundColor(0);
         });
 
-        //On click listener for easy button
-
+        //On click listener for hard button
         hard.setOnClickListener(click -> {
             urlBuilder.setDifficulty(3);
             Toast.makeText(this, "Hard", Toast.LENGTH_SHORT).show();
@@ -91,6 +90,13 @@ public class TriviaActivity extends AppCompatActivity implements AdapterView.OnI
             easy.setBackgroundColor(0);
             medium.setBackgroundColor(0);
         });
+
+        // ******Creating OnclickListener that leads to TriviaPlayActivity***************
+        Button startTrivia =  findViewById(R.id.start);
+        Intent goTriviaPlay = new Intent(this, TriviaPlayActivity.class);
+        startTrivia.setOnClickListener( click -> startActivity(goTriviaPlay));
+        // ******End of OnclickListener that leads to TriviaActivity***************
+
     }
 
     @Override
