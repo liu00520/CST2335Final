@@ -1,15 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".TriviaActivity">
+
+
+    <RelativeLayout
+        android:id="@+id/relativeLayoutToolBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/purple_500"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+
+        <ImageView
+            android:id="@+id/toolBarMenu"
+            android:layout_width="53dp"
+            android:layout_height="54dp"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/menu" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="CST2335 Final"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:textStyle="bold"/>
+
+</RelativeLayout>
 
     <TextView
         android:id="@+id/welcomeToTrivia"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/relativeLayoutToolBar"
         android:gravity="center"
         android:text="@string/welcomeToTrivia"
         android:textSize="30dp"
