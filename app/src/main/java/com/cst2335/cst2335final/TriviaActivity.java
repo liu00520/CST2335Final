@@ -18,6 +18,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 import android.widget.Toolbar;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
@@ -32,7 +33,8 @@ import static android.provider.ContactsContract.CommonDataKinds.Website.URL;
 public class TriviaActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     String category[] = {"Any Category", "Sports", "Cars", "Movies"};
-
+//    String category[];
+//    HashMap<String, String> categoryList;
 //    private HashMap<String, String> category = CategoryList;
     URLBuilder urlBuilder = new URLBuilder();
 
@@ -135,8 +137,8 @@ public class TriviaActivity extends AppCompatActivity implements AdapterView.OnI
             else{
                 urlBuilder.setQuantity(Integer.parseInt(String.valueOf(quantity.getText())));
                 urlBuilder.setType(typeID);
-                CategoryList categoryList = new CategoryList();
-                categoryList.execute(urlBuilder.getURL());
+//                CategoryList categoryList = new CategoryList();
+//                categoryList.execute(urlBuilder.getURL());
                 Log.i("ACTIVITY_TRIVIA: ",  "The URL is: " + urlBuilder.getURL() + " and type is: " + typeID);
                 startActivity(goTriviaPlay);
             }
@@ -144,10 +146,9 @@ public class TriviaActivity extends AppCompatActivity implements AdapterView.OnI
         // ******End of OnclickListener that leads to TriviaPlayActivity***************
     }
 
-
-
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
         if(position == 0){
             urlBuilder.setCategory(0);
         }else{
@@ -164,10 +165,11 @@ public class TriviaActivity extends AppCompatActivity implements AdapterView.OnI
 
     }
 
-    private void imageButtonClearBackground(){
 
-    }
-
+    /**
+     * This class is used to build the custom API url based on the user choice like quantity of questions,
+     * difficulty, questions category and type. After build the URL, the app will used it to load the questions.
+     */
     private class URLBuilder {
         private final String baseAPIURL = "https://opentdb.com/api.php?";
         private int quantity;
@@ -177,6 +179,9 @@ public class TriviaActivity extends AppCompatActivity implements AdapterView.OnI
         private final String[] typeOfQuestion = {"Any", "Multiple Choice", "True/False"};
         private int typeChoice;
 
+        /**
+         * Default constructor to initialize the default variable values if the user do not choose all or some of them
+         */
         public URLBuilder() {
             this.quantity = 10;
             this.category = 0;
@@ -184,34 +189,46 @@ public class TriviaActivity extends AppCompatActivity implements AdapterView.OnI
             this.typeChoice = 0;
         }
 
-
+        /** This method sets the quantity variable by passing the @param quantity value to the instance variable */
         public void setQuantity(int quantity) {
             this.quantity = quantity;
         }
-
+        /** This method sets the category variable by passing the @param category value to the instance variable */
         public void setCategory(int category) {
             this.category = category;
         }
 
+        /** This method sets the type of questions variable by passing the @param typeChoice value to the instance variable */
         public void setType(int typeChoice) {
+            //Compares if typeChoice value matches with the view id of multiple choice chosen by the user in the UI
             if(typeChoice == 2131230971){
                 //Multiple choice
+                //Sets the typeChoice to 1
                 this.typeChoice = 1;
             }
+            //Compares if typeChoice value matches with the view id of True/False choice chosen by the user in the UI
             else if(typeChoice == 2131230811){
                 //True or False (boolean)
+                //Sets the typeChoice to 1
                 this.typeChoice = 2;
-            }else{
+            }
+            //If the user didn't choose the type of question or if selected any type, the variable typeChoice will receive the default type
+            else{
                 //Any type of questions
                 this.typeChoice = 0;
             }
 
         }
+
+        /**
+         * This method sets difficulty variable by passing @param difficultyChoice value to the instance variable */
         public void setDifficulty(int difficultyChoice) {
             this.difficultyChoice = difficultyChoice;
         }
 
+        /** This method builds and @return the complete URL as a String to be used to load the questions based on the user's choice */
         public String getURL(){
+            //Creating and initializing a string builder object with the base URL from the API that can be changed depending on the user's choice
             StringBuilder builder = new StringBuilder(this.baseAPIURL);
 
             builder.append("amount=" + this.quantity);
@@ -263,19 +280,26 @@ public class TriviaActivity extends AppCompatActivity implements AdapterView.OnI
                     sb.append(line + "\n");
                 }
                 String result = sb.toString(); //result is the whole string
-                Log.i("doInBackground", result);//Debug###########
+                Log.i("JSON", result);//Debug###########
 
                 // convert string to JSON
                 JSONObject categories = new JSONObject(result);
+                JSONArray jsonArray = categories.getJSONArray("trivia_categories");
+                Log.i("JSON", categories.toString());
+                for(int i=0; i < jsonArray.length(); i++) {
 
-                for(int i=0; i < categories.length(); i++) {
-                    String id = categories.getString("id");
-                    String name = categories.getString("name");
+                    String id = "";
+                    String name = "";
+                    categories = jsonArray.getJSONObject(i);
+
+                    for(int j=0; j < 1; j++){
+                        id = String.valueOf(categories.getInt("id"));
+                        name = categories.getString("name");
+                    }
                     categoryList.put(id, name);
                 }
-
-
-            }catch (Exception e) {
+            }
+            catch (Exception e) {
             }
 
             return "Done";
